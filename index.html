@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+	<!-- Required meta tags-->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<!-- Color theme for statusbar (Android only) -->
+	<meta name="theme-color" content="#3174E0" />
+	<!-- Your app title -->
+	<title>Your Reading</title>
+	<link rel="icon" href="inc/img/favicon.png" />
+	<!-- Path to Framework7 Library Bundle CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/framework7/5.7.5/css/framework7.bundle.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/framework7-icons@3.0.1/css/framework7-icons.min.css" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+	<!-- Path to your custom app styles-->
+	<link rel="stylesheet" href="inc/css/style.css" />
+</head>
+<body>
+	<!-- App root element -->
+	<div id="app">
+
+		<!-- Your main view, should have "view-main" class -->
+		<div class="view view-main">
+
+			<!-- Initial Page, "data-name" contains page name -->
+			<div data-name="home" class="page">
+
+				<div class="tabbar toolbar toolbar-bottom tabbar-labels bg-color-white">
+					<div class="toolbar-inner">
+						<a href="#area-1" class="tab-link tab-link-active">
+							<i class="icon f7-icons if-not-md">house</i>
+							<i class="material-icons md-only">house</i>
+							<span class="tabbar-label">首頁</span>
+						</a>
+						<a href="#area-2" class="tab-link">
+							<i class="icon f7-icons if-not-md">book</i>
+							<i class="material-icons md-only">book</i>
+							<span class="tabbar-label">閱讀狀態</span>
+						</a>
+						<a href="#area-3" class="tab-link">
+							<i class="icon f7-icons if-not-md">suit_heart</i>
+							<i class="material-icons md-only">favorite_border</i>
+							<span class="tabbar-label">我的書單</span>
+						</a>
+						<a href="#" class="tab-link" onclick="addButtonClick()">
+							<i class="icon f7-icons if-not-md">plus</i>
+							<i class="material-icons md-only">add</i>
+							<span class="tabbar-label">新增</span>
+						</a>
+					</div>
+				</div>
+
+				<div class="tabs-animated-wrap">
+					<div class="tabs">
+						<div id="area-1" class="tab tab-active">
+							<div class="navbar main-navbar">
+								<div class="navbar-bg"></div>
+								<div class="navbar-inner sliding">
+									<div class="left"></div>
+									<div class="title">首頁</div>
+									<div class="right"></div>
+								</div>
+							</div>
+							
+							<div class="page-content">
+
+								<div class="tabs-animated-wrap">
+									<div class="block no-margin-top">
+										<div class="row" id="bookShelf"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="area-2" class="tab">
+							<div class="navbar main-navbar">
+								<div class="navbar-bg"></div>
+								<div class="navbar-inner sliding">
+									<div class="left"></div>
+									<div class="title">閱讀狀態</div>
+									<div class="right"></div>
+								</div>
+							</div>
+							
+							<div class="page-content">
+								<div class="toolbar toolbar-top tabbar" style="position: absolute;top: 0">
+									<div class="toolbar-inner">
+										<a href="#tab-1" class="tab-link tab-link-active">已閱讀</a>
+										<a href="#tab-2" class="tab-link">正在閱讀</a>
+										<a href="#tab-3" class="tab-link">未閱讀</a>
+									</div>
+								</div>
+
+								<div class="tabs-animated-wrap">
+									<div class="tabs">
+										<div id="tab-1" class="tab tab-active">
+											<div class="block-title">已閱讀清單</div>
+											<div class="list media-list chevron-center">
+												<ul id="readedlist"></ul>
+											</div>
+										</div>
+										<div id="tab-2" class="tab">
+											<div class="block-title">正在閱讀清單</div>
+											<div class="list media-list chevron-center">
+												<ul id="readinglist"></ul>
+											</div>
+										</div>
+										<div id="tab-3" class="tab">
+											<div class="block-title">未閱讀清單</div>
+											<div class="list media-list chevron-center">
+												<ul id="notreadlist"></ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="area-3" class="tab">
+							<div class="navbar main-navbar">
+								<div class="navbar-bg"></div>
+								<div class="navbar-inner sliding">
+									<div class="left"></div>
+									<div class="title">我的書單</div>
+									<div class="right"></div>
+								</div>
+							</div>
+							<div class="page-content no-padding-top">
+								<div class="list links-list">
+									<ul id="categoryTab"></ul>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				
+			</div>
+
+			<!-- Smart Select Nav -->
+			<div class="navbars"></div>
+		</div>
+	</div>
+	<!-- Path to Framework7 Library Bundle JS-->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/framework7/5.7.5/js/framework7.bundle.js"></script>
+	<script type="text/javascript" src="inc/js/script.js"></script>
+	<script type="text/javascript" src="inc/js/router.js"></script>
+	<!-- Path to your app js-->
+	<script type="text/javascript" src="inc/js/app.js"></script>
+	<script>
+		renderList('#readedlist', '已閱讀');
+		renderList('#readinglist', '正在閱讀');
+		renderList('#notreadlist', '未閱讀');
+
+		renderCategoryTab();
+
+		renderBookshelf();
+	</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+.skeleton-text .skeleton-block img {
+	opacity: 0;
+}
+
+.skeleton-block img {
+	opacity: 1;
+	transition: opacity 0.3s;
+}
+
+.media-list .skeleton-text .item-title,
+.media-list .skeleton-text .item-subtitle
+ {
+	visibility: hidden;
+}
+
+.media-list .skeleton-effect-fade .item-title:before {
+	content: 'Title';
+	visibility: visible;
+}
+
+.media-list .skeleton-effect-fade .item-title:before,
+.media-list .skeleton-effect-fade .item-subtitle:before {
+	content: 'Subitle';
+	visibility: visible;
+}
+
+.media-list li.card {
+	margin: 0;
+	box-shadow: none;
+	border-radius: 0;
+}
+
+.data-table td:empty:after {
+	content: '-';
+}
+
+.book-item {
+	font-size: 0;
+}
+
+.md .navbar-bg {
+	background: var(--f7-theme-color);
+}
+
+.md .navbar .title {
+	color: #fff;
+}
+
+.md .navbar a.link {
+	color: #fff;
+	font-size: 16px;
+}
